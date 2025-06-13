@@ -4,6 +4,7 @@ using System.Collections.Generic;
 public class PlayerMovement : MonoBehaviour
 {
     public float speed = 5f; // Movement speed of the player
+    public float playerDamage = 5f;
     public float gravity = -9.81f; // Gravity force applied to the player
     public float jumpHeight = 2f; // Height the player can jump
     private Transform cameraTransform; // Reference to the main camera (used for movement direction)
@@ -41,6 +42,7 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             velocity.y = -2f; // Set to a small negative value to maintain contact with ground
+            playerAnimator.SetBool("isJumping", false);
         }
 
         // If the jump button is pressed and the player is on the ground, calculate jump velocity
@@ -48,9 +50,11 @@ public class PlayerMovement : MonoBehaviour
         {
             // Use physics formula to calculate upward velocity for desired jump height
             velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+            HandleAnimation("Jump");
         }
 
-        if (isGrounded && Input.GetMouseButtonDown(0)){
+        if (isGrounded && Input.GetMouseButtonDown(0))
+        {
             Attack();
         }
 
@@ -60,8 +64,9 @@ public class PlayerMovement : MonoBehaviour
         // Apply the vertical movement (from gravity and jumping)
         controller.Move(velocity * Time.deltaTime);
     }
-    
-    private void CalculateMoveRot(){
+
+    private void CalculateMoveRot()
+    {
         // Get input axes for movement
         float moveX = Input.GetAxis("Horizontal");
         float moveZ = Input.GetAxis("Vertical");
@@ -70,7 +75,7 @@ public class PlayerMovement : MonoBehaviour
         Vector3 inputDir = new Vector3(moveX, 0, moveZ).normalized;
 
         // Only process movement and rotation if there's input
-        if (inputDir.magnitude >= 0.1f)
+        if (inputDir.magnitude >= 0.01f)
         {
             // Calculate the direction relative to the camera's current Y rotation
             float targetAngle = Mathf.Atan2(inputDir.x, inputDir.z) * Mathf.Rad2Deg + cameraTransform.eulerAngles.y;
@@ -86,20 +91,55 @@ public class PlayerMovement : MonoBehaviour
 
             // Move the player using the CharacterController
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            HandleAnimation("Run");
+        }
+        else
+        { 
+            playerAnimator.SetBool("isMoving", false);
         }
     }
 
-    private void Attack(){
-        playerAnimator.SetTrigger("isAttacking");
-
+    private void Attack()
+    {
+        HandleAnimation("Attack");
         foreach (var enemy in enemyList)
         {
             IDamageable damageable = enemy.GetComponent<IDamageable>();
 
-            if (damageable != null){
-                damageable.TakeDamage(1000);
+            if (damageable != null)
+            {
+                damageable.TakeDamage(playerDamage);
                 Debug.Log(damageable.GetHealth());
             }
+        }
+    }
+
+    void HandleAnimation(string animationString)
+    {
+        switch (animationString)
+        {
+            case "Run":
+                if (isGrounded)
+                {
+                    playerAnimator.SetBool("isMoving", true);
+                    playerAnimator.SetBool("isJumping", false);
+                }
+                else
+                {
+                    playerAnimator.SetBool("isMoving", false);
+                }
+                break;
+            case "Jump":
+                playerAnimator.SetBool("isMoving", false);
+                playerAnimator.SetBool("isJumping", true);
+                break;
+            case "Attack":
+                playerAnimator.SetBool("isMoving", false);
+                playerAnimator.SetBool("isJumping", false);
+                playerAnimator.SetTrigger("isAttacking");
+                break;
+            default:
+                break;
         }
     }
 }
