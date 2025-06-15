@@ -203,7 +203,7 @@ GameObject:
   m_Component:
   - component: {fileID: 59368911}
   m_Layer: 0
-  m_Name: All Environment ----- DO NOT TOUCH -----
+  m_Name: All Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1155,7 +1155,7 @@ GameObject:
   - component: {fileID: 410087040}
   - component: {fileID: 410087042}
   m_Layer: 0
-  m_Name: Directional Light ----- DO NOT TOUCH -----
+  m_Name: Directional Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1422,7 +1422,7 @@ GameObject:
   m_Component:
   - component: {fileID: 517222280}
   m_Layer: 0
-  m_Name: ImportantObjects ----- DO NOT TOUCH -----
+  m_Name: ImportantObjects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2309,7 +2309,7 @@ GameObject:
   - component: {fileID: 832575519}
   - component: {fileID: 832575518}
   m_Layer: 0
-  m_Name: Global Volume ----- DO NOT TOUCH -----
+  m_Name: Global Volume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3254,7 +3254,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1270759001}
   m_Layer: 0
-  m_Name: Environment ----- DO NOT TOUCH -----
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3288,7 +3288,7 @@ GameObject:
   - component: {fileID: 1329019359}
   - component: {fileID: 1329019358}
   m_Layer: 0
-  m_Name: EventSystem ----- DO NOT TOUCH -----
+  m_Name: EventSystem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4350,7 +4350,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1835507298}
   m_Layer: 0
-  m_Name: TPSCameras ----- DO NOT TOUCH -----
+  m_Name: TPSCameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4609,7 +4609,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1959958030}
   m_Layer: 0
-  m_Name: Ground ----- DO NOT TOUCH -----
+  m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
