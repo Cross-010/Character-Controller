@@ -1943,11 +1943,11 @@ CharacterController:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Height: 1.7
+  m_Height: 1.55
   m_Radius: 0.5
-  m_SlopeLimit: 20
-  m_StepOffset: 0.05
-  m_SkinWidth: 0.02
+  m_SlopeLimit: 45
+  m_StepOffset: 0.2
+  m_SkinWidth: 0.0001
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.79, z: 0}
 --- !u!114 &289190512700911201
@@ -1965,7 +1965,7 @@ MonoBehaviour:
   speed: 5
   playerDamage: 5
   gravity: -9.81
-  jumpHeight: 2
+  jumpHeight: 1
   enemyList: []
 --- !u!95 &1781161842473708343
 Animator:
