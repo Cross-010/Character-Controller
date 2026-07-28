@@ -35,4 +35,9 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Tutorial!");
         SceneManager.LoadScene("Tutorial");
     }
+    public void FightTutorial()
+    {
+        Debug.Log("Tutorial!");
+        SceneManager.LoadScene("FightTutorial");
+    }
 }
