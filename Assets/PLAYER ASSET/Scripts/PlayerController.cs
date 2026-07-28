@@ -1,6 +1,4 @@
-using System.Runtime.CompilerServices;
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,9 +7,9 @@ public class PlayerController : MonoBehaviour
     public float jumpHeight = 2f;
     public float maxHealth;
     public float currentHealth;
-    public Animator animator;
 
     private CharacterController controller;
+    public Animator animator;
     private Vector3 velocity;
     private bool isGrounded;
 
@@ -19,11 +17,12 @@ public class PlayerController : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
     }
 
     void Update()
     {
-
         isGrounded = controller.isGrounded;
 
         float moveX = Input.GetAxis("Horizontal");
@@ -56,6 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("Attack");
         }
+
     }
 }
 
