@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IDamageable
@@ -16,8 +17,9 @@ public class EnemyController : MonoBehaviour, IDamageable
         animator.SetTrigger("Hit");
         currentHealth -= damage;
     }
-
-    public void Die(){
+    
+    public void Die()
+    {
         animator.SetTrigger("Death");
     }
 
@@ -28,6 +30,9 @@ public class EnemyController : MonoBehaviour, IDamageable
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentHealth < 0)
+        {
+            Die();
+        }
     }
 }
