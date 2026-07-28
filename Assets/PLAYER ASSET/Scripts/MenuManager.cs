@@ -30,4 +30,9 @@ public class MenuManager : MonoBehaviour
         Debug.Log("Credits Time!");
         SceneManager.LoadScene("Credits");
     }
+    public void Tutorial()
+    {
+        Debug.Log("Tutorial!");
+        SceneManager.LoadScene("Tutorial");
+    }
 }
